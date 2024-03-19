@@ -27,5 +27,13 @@ with open(csvpath) as csvfile:
 
         # Add 1 to keep count of each month
         total_months += 1
+
+        # Add/subtract the profit/loss column to value by converting string to float
+        net_total += float(row[1])
+
+
         # Print row
-        print(row)
+        # print(row)
+
+print(f"Total months: {total_months}")
+print(f"Net total: {net_total}")
