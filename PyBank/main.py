@@ -45,10 +45,10 @@ import csv
 # Variables to calculate
 total_months = 0
 net_total = 0
-current_change = 0
-greatest_increase = []
-greatest_decrease = []
+greatest_increase = 0
+greatest_decrease = 0
 previous_value = 0
+profit_loss_changes = []
 
 
 # Set path for file
@@ -69,9 +69,25 @@ with open(csvpath) as csvfile:
         total_months += 1
 
         # Add/subtract the profit/loss column to value by converting string to float
-        net_total += float(row[1])
+        net_total += int(row[1])
+
+        # Calculate the change in profit/loss per month, add to list
+        # 'if' function skips the calculations for the first row (where there are no changes)
+        if previous_value != 0:
+            current_change = int(row[1]) - previous_value
+            profit_loss_changes.append(current_change)
+
+
+        # Change previous value before moving on to next row
+        previous_value = int(row[1])
+
+
 
 
 print(f"Total months: {total_months}")
 print(f"Net total: {net_total}")
 
+print(len(profit_loss_changes))
+print(round((sum(profit_loss_changes)/len(profit_loss_changes)), 2))
+print(max(profit_loss_changes))
+print(min(profit_loss_changes))
