@@ -1,3 +1,43 @@
+"""
+pseudo code
+
+import modules 'os' and 'csv'
+declare variables for calculations
+
+greatest_incr = 0
+greatest_decr = 0
+previous_value = 0
+
+set path to the file
+
+open csv file:
+    use 'csv' module to make file readable, assigned to new variable
+    skip header using 'next()'
+
+    loop through each row in the file:
+        
+        add 1 to counter for total months
+
+        add value in 'profit/loss' column to counter for net total with int()
+
+       current_change = (this row's profit/loss value) - (previous_value)
+        profit_loss_change.append(current_change)
+
+        check if current_change is positive
+            check if current_change > greatest_incr
+                greatest_incr.append(row[0], current_change)
+
+       else current change is negative
+            check if current_change < greatest_decr
+                greatest_decr.append(row[0], current_change)
+
+        make current row's profit/loss value the 'previous_value' variable's value
+
+        
+output variables
+
+"""
+
 # Importing modules 
 import os
 import csv
@@ -5,11 +45,10 @@ import csv
 # Variables to calculate
 total_months = 0
 net_total = 0
-changes_over_period = 0
+current_change = 0
 greatest_increase = []
 greatest_decrease = []
-prev_value = 0
-changes_month = ""
+previous_value = 0
 
 
 # Set path for file
@@ -22,7 +61,6 @@ with open(csvpath) as csvfile:
 
     # Skipping the header before looping through data
     csvheader = next(csvfile)
-    print(csvheader)
 
     # Loop through each row of data
     for row in csvreader:
