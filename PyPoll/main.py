@@ -59,3 +59,19 @@ with open(csvpath) as csvfile:
     # Skipping header
     csvheader = next(csvfile)
     print(csvheader)
+
+    # Loop through rows
+    for row in csvreader:
+        
+        # Add 1 for each row to total_votes
+        total_votes += 1
+
+        # Create key for candidate if candidate is not in the dictionary
+        if row[2] not in candidates.keys():
+            candidates[row[2]] = 0
+
+        # Add a vote for each candidate using their name as the key in 'candidates' dictionary
+        candidates[row[2]] += 1
+
+print(total_votes)
+print(candidates)
