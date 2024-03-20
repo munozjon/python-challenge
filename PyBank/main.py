@@ -105,26 +105,30 @@ with open(csvpath) as csvfile:
         # Change previous value before moving on to next row
         previous_value = int(row[1])
 
+# Find the average of the profit/loss changes
+average_changes = round((sum(profit_loss_changes)/len(profit_loss_changes)), 2)
 
-def financial_analysis():
+# Print the calculations to the terminal
+print("Financial Analysis")
+print("----------------------------")
+print(f"Total Months: {total_months}")
+print(f"Total: ${net_total}")
+print(f"Average Change: ${average_changes}")
+print(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})")
+print(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})")
 
-    print("Financial Analysis")
-    print("----------------------------")
-    print(f"Total Months: {total_months}")
-    print(f"Total: ${net_total}")
-    print(f"Average Change: ${round((sum(profit_loss_changes)/len(profit_loss_changes)), 2)}")
-    print(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})")
-    print(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})")
 
-financial_analysis()
-
+# Set path to text file
 txtpath = os.path.join("analysis", "analysis.txt")
 
+# Open text file to write to it
 with open(txtpath, "w") as text_file:
+    
+    # Write to text file line by line
     text_file.write("Financial Analysis\n")
     text_file.write("----------------------------\n")
     text_file.write(f"Total Months: {total_months}\n")
     text_file.write(f"Total: ${net_total}\n")
-    text_file.write(f"Average Change: ${round((sum(profit_loss_changes)/len(profit_loss_changes)), 2)}\n")
+    text_file.write(f"Average Change: ${average_changes}\n")
     text_file.write(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})\n")
     text_file.write(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})")
