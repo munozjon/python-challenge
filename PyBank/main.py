@@ -46,9 +46,12 @@ import csv
 total_months = 0
 net_total = 0
 greatest_increase = 0
+increase_month = ""
 greatest_decrease = 0
+decrease_month = ""
 previous_value = 0
 profit_loss_changes = []
+current_change = 0
 
 
 # Set path for file
@@ -77,6 +80,25 @@ with open(csvpath) as csvfile:
             current_change = int(row[1]) - previous_value
             profit_loss_changes.append(current_change)
 
+        # Track the current greatest increase and decrease and compare current change to them
+        # Track for greatest increase change
+        if current_change > 0:
+            if greatest_increase != 0:
+                if current_change > greatest_increase:
+                    greatest_increase = current_change
+                    increase_month = row[0]
+            else:
+                greatest_increase = current_change
+                increase_month = row[0]
+        # Track for greatest decrease change
+        else:
+            if greatest_decrease != 0:
+                if current_change < greatest_decrease:
+                    greatest_decrease = current_change
+                    decrease_month = row[0]
+            else:
+                greatest_decrease = current_change
+                decrease_month = row[0]
 
         # Change previous value before moving on to next row
         previous_value = int(row[1])
@@ -91,3 +113,9 @@ print(len(profit_loss_changes))
 print(round((sum(profit_loss_changes)/len(profit_loss_changes)), 2))
 print(max(profit_loss_changes))
 print(min(profit_loss_changes))
+
+print("\n\n\n")
+print(greatest_decrease)
+print(decrease_month)
+print(greatest_increase)
+print(increase_month)
