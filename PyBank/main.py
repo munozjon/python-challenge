@@ -80,7 +80,8 @@ with open(csvpath) as csvfile:
             current_change = int(row[1]) - previous_value
             profit_loss_changes.append(current_change)
 
-        # Track the current greatest increase and decrease and compare current change to them
+        # Track the current greatest increases and decreases in changes and compare current change to them
+            
         # Track for greatest increase change
         if current_change > 0:
             if greatest_increase != 0:
@@ -90,6 +91,7 @@ with open(csvpath) as csvfile:
             else:
                 greatest_increase = current_change
                 increase_month = row[0]
+        
         # Track for greatest decrease change
         else:
             if greatest_decrease != 0:
@@ -104,18 +106,15 @@ with open(csvpath) as csvfile:
         previous_value = int(row[1])
 
 
+def financial_analysis():
 
+    print("Financial Analysis")
+    print("----------------------------")
+    print(f"Total Months: {total_months}")
+    print(f"Total: ${net_total}")
+    print(f"Average Change: ${round((sum(profit_loss_changes)/len(profit_loss_changes)), 2)}")
+    print(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})")
+    print(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})")
 
-print(f"Total months: {total_months}")
-print(f"Net total: {net_total}")
+financial_analysis()
 
-print(len(profit_loss_changes))
-print(round((sum(profit_loss_changes)/len(profit_loss_changes)), 2))
-print(max(profit_loss_changes))
-print(min(profit_loss_changes))
-
-print("\n\n\n")
-print(greatest_decrease)
-print(decrease_month)
-print(greatest_increase)
-print(increase_month)
