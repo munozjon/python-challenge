@@ -38,3 +38,24 @@ elif max(candidate_votes_list) == candidate 2:
 else:
     candidate 3 wins
 """
+
+# Import modules
+import os
+import csv
+
+# Define variables
+total_votes = 0
+candidates = {}
+
+# Set path for file
+csvpath = os.path.join("Resources", "election_data.csv")
+
+# Opening file
+with open(csvpath) as csvfile:
+
+    # Use CSV module to read file
+    csvreader = csv.reader(csvfile, delimiter=",")
+
+    # Skipping header
+    csvheader = next(csvfile)
+    print(csvheader)
