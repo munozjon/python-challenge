@@ -58,7 +58,6 @@ with open(csvpath) as csvfile:
 
     # Skipping header
     csvheader = next(csvfile)
-    print(csvheader)
 
     # Loop through rows
     for row in csvreader:
@@ -73,8 +72,8 @@ with open(csvpath) as csvfile:
         # Add a vote for each candidate using their name as the key in 'candidates' dictionary
         candidates[row[2]] += 1
 
-
-election_winner = 0
+# Find the candidate with the most votes using max() on the "candidates" dictionary's values
+election_winner = max(candidates.values())
 
 # Print results to terminal
 print("Election Results")
@@ -86,6 +85,12 @@ print("-------------------------")
 for k, v in candidates.items():
     vote_percent = round(((v / total_votes) * 100), 3)
     print(f"{k}: {vote_percent}% ({v})")
+
+    # Find the winning candidate by comparing the value to 'election_winner' and creating a variable with their name to print
+    if v == election_winner:
+        winner_name = k
+
+# Print the winner using variable created
 print("-------------------------")
-print(f"Winner: ")
+print(f"Winner: {winner_name}")
 print("-------------------------")
