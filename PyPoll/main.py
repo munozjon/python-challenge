@@ -53,3 +53,25 @@ for k, v in candidates.items():
 print("-------------------------")
 print(f"Winner: {winner_name}")
 print("-------------------------")
+
+# Set path to text file
+txtpath = os.path.join("analysis", "analysis.txt")
+
+# Open text file to write to it
+with open(txtpath, "w") as text_file:
+    
+    # Write to text file line by line
+    text_file.write("Election Results\n")
+    text_file.write("-------------------------\n")
+    text_file.write(f"Total Votes: {total_votes}\n")
+    text_file.write("-------------------------\n")
+
+    # Iterate through dictionary to calculate the candidates' percentage of votes and write to text file
+    for k, v in candidates.items():
+        vote_percent = round(((v / total_votes) * 100), 3)
+        text_file.write(f"{k}: {vote_percent}% ({v})\n")
+    
+    # With 'winner_name' variable, write the winner's name to terminal
+    text_file.write("-------------------------\n")
+    text_file.write(f"Winner: {winner_name}\n")
+    text_file.write("-------------------------")
