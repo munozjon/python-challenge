@@ -1,7 +1,7 @@
 # python-challenge
 
 ## Module 3 Challenge
-For this assignment I analyzed data from 2 different CSV files using Python programming.
+For this assignment I analyzed data from 2 different CSV files using Python programming. Each challenge required me to extrapolate different results according to the dataset.
 
 ## PyBank
 For this part of the assignment, I analyzed a financial dataset in the form of a CSV file with two columns, "Date" and "Profit/Losses." I was instructed to find the total number of months included, the net total "profit/losses" across the entire period, the average changes in "profit/losses" month to month, the greatest increase in profits, and the greatest decrease in profits.
