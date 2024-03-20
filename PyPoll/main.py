@@ -73,5 +73,19 @@ with open(csvpath) as csvfile:
         # Add a vote for each candidate using their name as the key in 'candidates' dictionary
         candidates[row[2]] += 1
 
-print(total_votes)
-print(candidates)
+
+election_winner = 0
+
+# Print results to terminal
+print("Election Results")
+print("-------------------------")
+print(f"Total Votes: {total_votes}")
+print("-------------------------")
+
+# Iterate through dictionary to calculate the candidates' percentage of votes and print to terminal
+for k, v in candidates.items():
+    vote_percent = round(((v / total_votes) * 100), 3)
+    print(f"{k}: {vote_percent}% (v)")
+print("-------------------------")
+print("")
+print("-------------------------")
