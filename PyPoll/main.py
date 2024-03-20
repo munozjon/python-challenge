@@ -85,7 +85,7 @@ print("-------------------------")
 # Iterate through dictionary to calculate the candidates' percentage of votes and print to terminal
 for k, v in candidates.items():
     vote_percent = round(((v / total_votes) * 100), 3)
-    print(f"{k}: {vote_percent}% (v)")
+    print(f"{k}: {vote_percent}% ({v})")
 print("-------------------------")
-print("")
+print(f"Winner: ")
 print("-------------------------")
