@@ -118,3 +118,13 @@ def financial_analysis():
 
 financial_analysis()
 
+txtpath = os.path.join("analysis", "analysis.txt")
+
+with open(txtpath, "w") as text_file:
+    text_file.write("Financial Analysis\n")
+    text_file.write("----------------------------\n")
+    text_file.write(f"Total Months: {total_months}\n")
+    text_file.write(f"Total: ${net_total}\n")
+    text_file.write(f"Average Change: ${round((sum(profit_loss_changes)/len(profit_loss_changes)), 2)}\n")
+    text_file.write(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})\n")
+    text_file.write(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})")
